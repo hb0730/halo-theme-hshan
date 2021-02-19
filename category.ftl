@@ -4,7 +4,11 @@
         <main class="site-main" id="main">
             <div class="site-content">
                 <header class="bg-cover page-header">
-                    <#if settings.categories_patternimg?? && settings.categories_patternimg!=''>
+                    <#if category.thumbnail?? && category.thumbnail!=''>
+                        <div class="cover-bg">
+                            <img src="${category.thumbnail!}" alt="${category.name}">
+                        </div>
+                    <#elseif settings.categories_patternimg?? && settings.categories_patternimg!=''>
                         <div class="cover-bg">
                             <img src="${settings.categories_patternimg!}" alt="${blog_title!}">
                         </div>
