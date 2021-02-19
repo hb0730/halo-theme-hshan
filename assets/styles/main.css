@@ -2516,6 +2516,14 @@ blockquote {
 .post-content h6 {
   margin-top: -30px;
 }
+.post-content h1:focus,
+.post-content h2:focus,
+.post-content h3:focus,
+.post-content h4:focus,
+.post-content h5:focus,
+.post-content h6:focus {
+  outline: none !important;
+}
 .post-content pre {
   margin: 0 !important;
   padding: 10px 0 !important;
