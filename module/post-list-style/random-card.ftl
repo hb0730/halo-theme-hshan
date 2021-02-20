@@ -46,14 +46,15 @@
                                 </time>
                             </div>
 
-                            <h1 class="title main-title gradient-effect" >
-                                <a href="${post.fullPath!}" data-ajax>${post.title!}</a>
-                            </h1>
+                            <p class="gradient-effect text-clamp-1" title="${post.title!}" style="color: var(--base-color);">
+                                <a href="${post.fullPath!}" data-ajax> ${post.title!} </a>
+                            </p>
                         </header>
-
-                        <div class="post-excerpt">
-                            ${post.summary!}
-                        </div>
+                        <a href="${post.fullPath!}" data-ajax>
+                            <div class="post-excerpt text-clamp-3 tracking-wider">
+                                ${post.summary!}
+                            </div>
+                        </a>
 
                         <footer class="author-meta">
                             <a href="" class="author" title="" data-ajax>

@@ -3631,6 +3631,22 @@ div.articles article div.post-excerpt {
   word-break: break-all;
   font-size: 1rem;
   margin: 20px;
+  color: #363636;
+}
+.text-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.text-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 .author-meta {
   border-top: 2px solid #F4F4F4;
