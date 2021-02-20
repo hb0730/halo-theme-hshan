@@ -30,13 +30,13 @@
                                             <span class="fullimage default-cover-bg" role="img" aria-label=""></span>
                                         </a>
                                     </#if>
-                                    <#if post.tags?? && post.tags?size gt 0>
+                                    <#--  <#if post.tags?? && post.tags?size gt 0>
                                         <div class="tags absolute">
                                             <a data-ajax href="${post.tags[0].fullPath!}" class="ctag ctag-6 ctag-gridea">
                                                 ${post.tags[0].name!}
                                             </a>
                                         </div>
-                                    </#if>
+                                    </#if>  -->
                                 </div>
                             </div>
                             <div class="meta">
