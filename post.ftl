@@ -14,6 +14,10 @@
                             <div class="cover-bg">
                                 <img src="${post.thumbnail!}" alt="${post.title!}"/>
                             </div>
+                         <#elseif settings.card_random_cover_list?? && settings.card_random_cover_list != ''>
+                            <div class="cover-bg">
+                                <img src="" class="img-random"  alt="${post.title}"/>
+                            </div>
                         <#else>
                             <div class="default-cover-bg">
                             </div>

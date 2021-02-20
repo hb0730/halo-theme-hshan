@@ -174,6 +174,9 @@
             // card 延迟加载
             han.lazyLoadCardItem()
 
+            // 图片懒加载
+            han.lazyloadImg();
+
             //重载
             if (typeof _hmt !== 'undefined') {
                 // support 百度统计
@@ -262,6 +265,25 @@
             NProgress.done();
             bar('系统出现问题，请手动刷新一次', '3000');
         });
+    </script>
+</#if>
+
+<#if settings.post_list_style == 'card'>
+    <script type="text/javascript">
+        var photoList = `${settings.card_random_cover_list!''}`;
+        var photos = new Array();
+        if (photoList && photoList.trim() !== '') {
+            if(photoList.endsWith(';')) {
+                photoList = photoList.substring(0, photoList.length - 1);
+            }
+            var photoArr = photoList.split(";");
+            // 过滤photos中的空字符
+            for(let i = 0; i < photoArr.length; i++) {
+                if (photoArr[i] && photoArr[i].trim().length > 0){
+                        photos.push(photoArr[i].trim());
+                }
+            }
+        }
     </script>
 </#if>
 

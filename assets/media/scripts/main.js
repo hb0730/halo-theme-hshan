@@ -184,6 +184,29 @@ var han = {
             return false;
         });
     },
+    
+    /**
+     * 懒加载图片
+     */
+    lazyloadImg: function() {
+        var randomImgs = document.querySelectorAll('.img-random');
+        //检查图片是否在可视区内，如果不在，则加载
+        function check() {
+            Array.from(randomImgs).forEach(function (el) {
+                    loadRandomImgs(el);
+            })
+        }
+        function loadRandomImgs(el) {
+            var index = el.getAttribute('index');
+            var imgIndex = !index ? new Date().getSeconds() : index;
+            if(el.nodeName=='SPAN'){
+                el.style.backgroundImage = "url("+photos[imgIndex % photos.length]+")";
+            }else if(el.nodeName=='IMG'){
+                el.src=photos[imgIndex % photos.length];
+            }
+        }
+            check();
+    }
 
 }
 
@@ -210,7 +233,10 @@ $(function () {
 
     han.getScrollTop()
 
+    // 图片懒加载
+    han.lazyloadImg();
 })
+
 
 // 删除日志中的空元素
 $(document).ready(

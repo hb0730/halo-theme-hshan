@@ -18,13 +18,16 @@
                                             <span class="fullimage cover" role="img" aria-label=""
                                                   style="background-image: url(${post.thumbnail!''});"></span>
                                         </a>
-                                    <#elseif settings.card_random_cover!false>
-                                        <a data-ajax href="${post.fullPath!}" class="thumb hover-effect">
-                                            <#assign x = "${settings.card_random_cover_img_num?number}" />
-                                            <#assign thumbnailIndex ="${post_index % (x?number)}"/>
-                                                 <span class="fullimage cover" role="img" aria-label=""
-                                                       style="background-image: url(${blog_url!}/thumbnail/thumbnail-${thumbnailIndex?number?abs}.${settings.card_random_cover_img_suffix});"></span>
-                                            </a>
+                                    <#elseif settings.card_random_cover_list ?? && settings.card_random_cover_list != ''>     
+                                      <a data-ajax href="${post.fullPath!}"
+                                        style=" background-image: url(${post.thumbnail!''});
+                                        background-repeat: no-repeat!important;
+                                        background-position: center center!important;
+                                        background-size: cover!important;"
+                                              class="thumb hover-effect">
+                                             <span class="fullimage cover img-random"  role="img" aria-label=""
+                                                  style="background-image: url(''});"></span>
+                                        </a>
                                     <#else>
                                         <a data-ajax href="${post.fullPath!}" class="thumb hover-effect">
                                             <span class="fullimage default-cover-bg" role="img" aria-label=""></span>
