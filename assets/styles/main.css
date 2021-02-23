@@ -3785,8 +3785,15 @@ body.night {
 .night .post-title a:hover {
   color: #98A9F9 !important;
 }
+.night .text-clamp-1 a:hover {
+  color: #98A9F9 !important;
+}
 .night .post-meta {
   color: #adabac;
+}
+.night .text-clamp-1,
+.night div.articles article div.post-excerpt {
+  color: var(--night-color);
 }
 .night .post-tags a {
   color: var(--base-color);
