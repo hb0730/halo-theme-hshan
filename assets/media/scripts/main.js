@@ -11,10 +11,10 @@ reframe(videoEmbeds.join(','))
 var katex_config = {
     delimiters:
         [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false},
-            {left: "\\(", right: "\\)", display: false},
-            {left: "\\[", right: "\\]", display: true},
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true },
         ]
 };
 
@@ -50,7 +50,7 @@ if (sidebarToggle)
 var oldScrollTop;
 var han = {
     lazyLoad: function () {
-        $("#page").velocity("transition.slideDownBigIn", {stagger: 200});
+        $("#page").velocity("transition.slideDownBigIn", { stagger: 200 });
     },
 
     initLazyLoad: function () {
@@ -62,7 +62,7 @@ var han = {
     },
 
     lazyLoadCardItem: function () {
-        $(".card-item-vel").velocity("transition.slideUpIn", {stagger: 200, display: "flex"});
+        $(".card-item-vel").velocity("transition.slideUpIn", { stagger: 200, display: "flex" });
     },
 
     linksAddBlank: function () {
@@ -119,7 +119,7 @@ var han = {
         $('#sidebarToggle').removeClass('menu-ctrl-on')
         $(document.body).removeClass('sidebar-opened')
         $(document.body).removeClass('cancel-scroll')
-        $(".side-bar-val").velocity("transition.slideUpOut", {stagger: 200});
+        $(".side-bar-val").velocity("transition.slideUpOut", { stagger: 200 });
     },
 
     // 当前菜单菜单高亮
@@ -153,10 +153,10 @@ var han = {
             $(angle).toggleClass('angle-transform');
             var subMenu = $(this).siblings('.nav-sub-menu');
             if (subMenu && !$(this).siblings('.nav-sub-menu').hasClass('nav-menu-show')) {
-                subMenu.velocity("transition.slideDownIn", {duration: 300});
+                subMenu.velocity("transition.slideDownIn", { duration: 300 });
                 subMenu.addClass('nav-menu-show')
             } else if (subMenu && $(this).siblings('.nav-sub-menu').hasClass('nav-menu-show')) {
-                subMenu.velocity("transition.slideUpOut", {duration: 300});
+                subMenu.velocity("transition.slideUpOut", { duration: 300 });
                 subMenu.removeClass('nav-menu-show')
             }
         });
@@ -184,28 +184,55 @@ var han = {
             return false;
         });
     },
-    
+
     /**
      * 懒加载图片
      */
-    lazyloadImg: function() {
-        var randomImgs = document.querySelectorAll('.img-random');
+    lazyloadImg: function () {
+        var imgs = document.querySelectorAll('img.lazyload');
+        var randomImgs = document.querySelectorAll('img.img-random');
+        //用来判断bound.top<=clientHeight的函数，返回一个bool值
+        function isIn(el) {
+            const bound = el.getBoundingClientRect();
+            const clientHeight = window.innerHeight;
+            return bound.top <= clientHeight;
+        }
         //检查图片是否在可视区内，如果不在，则加载
         function check() {
+            Array.from(imgs).forEach(function (el) {
+                if (isIn(el)) {
+                    loadImg(el);
+                }
+            })
             Array.from(randomImgs).forEach(function (el) {
+                if (isIn(el)) {
                     loadRandomImgs(el);
+                }
             })
         }
-        function loadRandomImgs(el) {
-            var index = el.getAttribute('index');
-            var imgIndex = !index ? new Date().getSeconds() : index;
-            if(el.nodeName=='SPAN'){
-                el.style.backgroundImage = "url("+photos[imgIndex % photos.length]+")";
-            }else if(el.nodeName=='IMG'){
-                el.src=photos[imgIndex % photos.length];
+        function loadImg(el) {
+            const loaded = el.getAttribute('data-loaded')
+            if (!loaded) {
+                el.src = el.dataset.src;
+                el.setAttribute('data-loaded', true)
             }
         }
+        function loadRandomImgs(el) {
+            const loaded = el.getAttribute('data-loaded')
+            if (!loaded) {
+                var index = el.getAttribute('index');
+                var imgIndex = !index ? new Date().getSeconds() : index;
+                if (el.nodeName == 'SPAN') {
+                    el.style.backgroundImage = "url(" + photos[imgIndex % photos.length] + ")";
+                } else if (el.nodeName == 'IMG') {
+                    el.src = photos[imgIndex % photos.length];
+                }
+                el.setAttribute('data-loaded', true)
+            }
+        }
+        window.onload = window.onscroll = function () { //onscroll()在滚动条滚动的时候触发
             check();
+        }
     }
 
 }

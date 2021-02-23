@@ -10,23 +10,13 @@
                                 <div class="featured-image">
                                     <#if post.thumbnail?? && post.thumbnail!=''>
                                         <a data-ajax href="${post.fullPath!}"
-                                        style=" background-image: url(${post.thumbnail!''});
-                                        background-repeat: no-repeat!important;
-                                        background-position: center center!important;
-                                        background-size: cover!important;"
-                                              class="thumb hover-effect">
-                                            <span class="fullimage cover" role="img" aria-label=""
-                                                  style="background-image: url(${post.thumbnail!''});"></span>
+                                              class="thumb hover-effect" style="background-color: transparent !important">
+                                            <img class="lazyload fullimage cover" role="img" aria-label="" src="${theme_base!}/assets/media/images/loading.svg"  data-src="${post.thumbnail!''}" alt="${post.title}" />
                                         </a>
                                     <#elseif settings.card_random_cover_list ?? && settings.card_random_cover_list != ''>     
                                       <a data-ajax href="${post.fullPath!}"
-                                        style=" background-image: url(${post.thumbnail!''});
-                                        background-repeat: no-repeat!important;
-                                        background-position: center center!important;
-                                        background-size: cover!important;"
-                                              class="thumb hover-effect">
-                                             <span class="fullimage cover img-random"  role="img" aria-label=""
-                                                  style="background-image: url(''});"></span>
+                                              class="thumb hover-effect" style="background-color: transparent !important">
+                                              <img class="fullimage cover img-random" role="img" aria-label="" src="${theme_base!}/assets/media/images/loading.svg" data-src="${post.thumbnail!''}" alt="${post.title}" />
                                         </a>
                                     <#else>
                                         <a data-ajax href="${post.fullPath!}" class="thumb hover-effect">
