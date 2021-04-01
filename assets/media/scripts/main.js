@@ -17,6 +17,7 @@ var katex_config = {
             { left: "\\[", right: "\\]", display: true },
         ]
 };
+//img
 
 // Sidebar toggle
 var sidebarToggle = document.querySelectorAll('.sidebar-toggle')
@@ -184,6 +185,21 @@ var han = {
             return false;
         });
     },
+    /**
+     * 随机图片
+     */
+    randomImg: function(){
+        if(homeCover&&photos.length<=0){
+            if($(".bg-cover > .cover-bg > img").length<=0){
+                $(".bg-cover > .cover-bg").append("<img src="+homeCover+" alt=''>")
+            }
+        }else if(photos.length>0){
+            if($(".bg-cover > .cover-bg > img").length<=0){
+                var imgSrc= photos[Math.floor(Math.random()*photos.length)]
+                $(".bg-cover > .cover-bg").append("<img src="+imgSrc+" alt=''>")
+            }
+        }
+    },
 
     /**
      * 懒加载图片
@@ -238,6 +254,7 @@ var han = {
 }
 
 $(function () {
+    han.randomImg()
     // han.lazyLoad()
 
     han.lazyLoadCardItem()

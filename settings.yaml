@@ -22,7 +22,7 @@ genernal:
       placeholder: '网站主题色'
     home_cover:
       name: home_cover
-      label: 首页背景
+      label: 首页背景(如果存在随机采用随机)
       type: attachment
       default: https://cdn.jsdelivr.net/gh/hshanx/static@v1.0.2/default-bg.jpeg
     enabled_index_cover_height:

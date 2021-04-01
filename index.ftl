@@ -7,7 +7,8 @@
                 <header class="bg-cover hero">
                     <#if settings.home_cover?? && settings.home_cover!=''>
                         <div class="cover-bg">
-                            <img src="${settings.home_cover!}" alt="">
+                            <#--  <img src="${settings.home_cover!}" alt="">  -->
+                            <#--  <img src="han.randomImg()" alt="">  -->
                         </div>
                     <#else>
                         <div class="default-cover-bg">

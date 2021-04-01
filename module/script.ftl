@@ -166,6 +166,7 @@
                 //     $(this).remove()
                 // });
             }
+            han.randomImg();
 
             han.initLazyLoad();
             // 整个页面延迟加载
@@ -289,6 +290,7 @@
 
 
 <script type="text/javascript">
+    var homeCover = `${settings.home_cover!''}`;
     console.clear();
     console.log("%c 有朋自远方来, 不亦说乎.", "background:#24272A; color:#ffffff", "");
     console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/hshanx");
